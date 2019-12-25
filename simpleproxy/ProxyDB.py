@@ -38,7 +38,7 @@ class ProxyDB():
             raise
 
     def fetch_proxies(self):
-        columns = ['ip_v4', 'port', 'type', 'status']
+        columns = ['ip_v4', 'port', 'type', 'status', 'up_since', 'down_since']
         select_string = "SELECT %s FROM proxies WHERE status != 'DEAD'" % (', '.join(columns))
 
         try:
