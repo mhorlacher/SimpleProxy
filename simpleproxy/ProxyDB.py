@@ -1,3 +1,4 @@
+import sys
 import configparser
 
 import psycopg2
@@ -25,6 +26,7 @@ class ProxyDB():
             d = proxy.__dict__
             insert_values = [d[column] for column in columns]
         except:
+            print(d, file = sys.stderr)
             raise
 
         try:
