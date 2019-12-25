@@ -58,7 +58,7 @@ class ProxyDB():
     def delete_proxy(self, proxy):
         pass
 
-    def update(self, proxy, update_dict):
+    def update(self, proxy):
         update_string = 'UPDATE proxies '
         update_string += 'SET delay = %s, status = %s, up_since = %s, '
         update_string += 'down_since = %s, last_checked = %s '
