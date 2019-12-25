@@ -3,6 +3,8 @@ import configparser
 
 import psycopg2
 
+from .Proxy import Proxy
+
 class ProxyDB():
     def __init__(self, db_cfg):
         config = configparser.ConfigParser()
