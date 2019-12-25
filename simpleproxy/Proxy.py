@@ -65,6 +65,8 @@ class Proxy():
         else:
             self.delay = 9999
 
+        if up and self.status == 'UP':
+            pass
         if up and not self.status == 'UP':
             self.status = 'UP'
             self.up_since = now
@@ -73,6 +75,8 @@ class Proxy():
             self.status = 'DOWN'
             self.up_since = None
             self.down_since = now
+        elif not up and not self.status == 'UP':
+            pass
 
         self.last_checked = now
 
