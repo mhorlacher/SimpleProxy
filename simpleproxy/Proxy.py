@@ -6,17 +6,21 @@ from ping3 import ping
 from .ProxyUtils import get_my_ip
 
 class Proxy():
-    def __init__(self, proxy_ip_v4, proxy_port, proxy_type, proxy_delay = None, 
-                 proxy_status = None, proxy_anonymity = None):
+    def __init__(self, ip_v4, port, type, delay = None, status = None, anonymity = None,
+                 up_since = None, down_since = None, first_received = None, last_checked = None):
 
-        self.ip_v4 = proxy_ip_v4
-        self.port = proxy_port
-        self.type = proxy_type
+        self.ip_v4 = ip_v4
+        self.port = port
+        self.type = type
 
-        self.anonymity = proxy_anonymity
+        self.delay = delay
+        self.status = status
 
-        self.delay = proxy_delay
-        self.status = proxy_status
+        self.anonymity = anonymity
+        self.up_since = up_since
+        self.down_since = down_since
+        self.first_received = first_received
+        self.last_checked = last_checked
 
     def proxy_as_url(self):
         """Returns proxy address, port and type in URL format."""
@@ -42,7 +46,7 @@ class Proxy():
             if len(response) > 15:
                 return False
             else:
-                proxy_ip = response
+                ip = response
         except requests.exceptions.ReadTimeout:
             return False
         except requests.exceptions.ConnectionError:
@@ -52,7 +56,7 @@ class Proxy():
         except:
             raise
 
-        return not (proxy_ip == my_ip)
+        return not (ip == my_ip)
 
     def check_proxy(self, my_ip = None):
         delay = self.ping_proxy()

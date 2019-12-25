@@ -49,7 +49,7 @@ class ProxyDB():
 
         proxy_list = list()
         for row in proxy_table:
-            proxy_dict = dict(zip(['proxy_' + column for column in columns], row))
+            proxy_dict = dict(zip([column for column in columns], row))
             proxy = Proxy(**proxy_dict)
             proxy_list.append(proxy)
 
