@@ -60,6 +60,9 @@ class Proxy():
 
     def check_proxy(self, my_ip = None):
         delay = self.ping_proxy()
+
+        if my_ip is None:
+            my_ip = get_my_ip()
         up = self.verify_proxy(my_ip = my_ip)
 
         now = datetime.now()
@@ -83,5 +86,7 @@ class Proxy():
             pass
 
         self.last_checked = now
+
+        return (delay and up)
 
 
